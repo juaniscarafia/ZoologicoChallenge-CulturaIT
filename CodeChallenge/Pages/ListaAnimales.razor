@@ -1,0 +1,43 @@
+﻿@page "/listaAnimales"
+@inject CodeChallenge.Data.ZoologicoServicio _zoologicoServicio
+
+<h3>Lista de Animales</h3>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">FechaIngreso</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Especie</th>
+                <th scope="col">Edad</th>
+                <th scope="col">LugarOrigen</th>
+                <th scope="col">Peso</th>
+                <th scope="col">PorcentajeAlimento</th>
+                <th scope="col">ValorFijoAlimento</th>
+                <th scope="col">PorcentajeAlimentoHierbas</th>
+                <th scope="col">CambioPielPeriodo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var animal in _zoologicoServicio._animales)
+            {
+                <tr>
+                    <td>@animal.FechaIngreso</td>
+                    <td>@animal.Tipo</td>
+                    <td>@animal.Especie</td>
+                    <td>@animal.Edad</td>
+                    <td>@animal.LugarOrigen</td>
+                    <td>@animal.Peso</td>
+                    <td>@animal.PorcentajeAlimento</td>
+                    <td>@animal.ValorFijoAlimento</td>
+                    <td>@animal.PorcentajeAlimentoHierbas</td>
+                    <td>@animal.CambioPielPeriodo</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+</div>
+@code {
+    
+}

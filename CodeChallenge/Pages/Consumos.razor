@@ -1,0 +1,39 @@
+﻿@page "/consumos"
+@using static CodeChallenge.Data.ZoologicoServicio;
+@inject CodeChallenge.Data.ZoologicoServicio _zoologicoServicio
+
+<h3>Lista de Animales</h3>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Consumo mensual de carne</th>
+                <th scope="col">Consumo mensual de hierbas</th>
+                <th scope="col">Consumo total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@consumo.Carne</td>
+                <td>@consumo.Hierbas</td>
+                <td>@consumo.ConsumoTotal</td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>
+@code {
+    private ConsumoMes consumo = new ConsumoMes();
+    protected CodeChallenge.Data.Model.Animal animal = new Data.Model.Animal();
+
+    protected override Task OnInitializedAsync()
+    {
+        Consumo();
+        return base.OnInitializedAsync();
+    }
+
+    private void Consumo()
+    {
+        consumo = _zoologicoServicio.CalcularConsumoMensual();
+    }
+}
